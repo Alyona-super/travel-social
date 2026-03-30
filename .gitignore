@@ -1,0 +1,175 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+test-reports/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# Secrets and keys
+*.key
+*.pem
+*.crt
+secrets/
+secrets.yaml
+credentials.json
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+logfile-*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.vscode-test/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+*.tar.gz
+*.tar
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+
+# Project specific
+*.pid
+*.seed
+*.pid.lock
+.cache/
+.venv/
+
+# FastAPI
+*.pyc
+
+# Pytest
+.pytest_cache/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Code coverage
+htmlcov/
+.tox/
+
+# Local development
+local/
+tmp/
+temp/
+*.tmp
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Database migrations backup
+*.sql.bak
+
+# API documentation
+site/
+docs/_build/
+
+# Profiling data
+*.prof
+*.lprof
+
+# Kubernetes
+*.kubeconfig
+*.kubeconfig.local
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Node modules (если будет frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

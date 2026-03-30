@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: travel
+      POSTGRES_PASSWORD: travel123
+      POSTGRES_DB: travel
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  profile-service:
+    build: ./services/user-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: travel
+      DB_PASSWORD: travel123
+      DB_NAME: travel
+
+  feed-service:
+    build: ./services/feed-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: travel
+      DB_PASSWORD: travel123
+      DB_NAME: travel
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "80:80"
+    depends_on:
+      - user-service
+      - feed-service
+
+volumes:
+  postgres_data:
