@@ -1,22 +1,32 @@
-# database.py
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
+import logging
 
-# SQLite для разработки
-SQLALCHEMY_DATABASE_URL = "sqlite:///./users.db"
+logger = logging.getLogger(__name__)
 
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False}  #только для SQLite
+# Получаем URL бд из переменных окружения
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:postgres@localhost:5433/travel"
 )
 
+# Создаем engine
+engine = create_engine(
+    DATABASE_URL,
+    pool_size=10,
+    max_overflow=20,
+    echo=True
+)
+
+# Создание фабрики сессий
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
 Base = declarative_base()
 
-
 def get_db():
-    """Зависимость для получения сессии БД"""
+    """Dependency для получения сессии БД"""
     db = SessionLocal()
     try:
         yield db

@@ -15,11 +15,20 @@ logger = logging.getLogger(__name__)
 # Создаем таблицы в БД
 Base.metadata.create_all(bind=engine)
 
+
+
+
+
 app = FastAPI(
     title="Profile Service",
     description="Service for managing user profiles",
     version="1.0.0"
 )
+
+@app.get("/")
+def read_root():
+    return {"message": "соцсеть для путешественников!"}
+
 # CORS настройки
 app.add_middleware(
     CORSMiddleware,
