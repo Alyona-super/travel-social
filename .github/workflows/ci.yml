@@ -40,7 +40,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pytest pytest-asyncio
-          pip install -r services/User-service/requirements.txt
+          pip install -r services/user_service/requirements.txt
 
       - name: Run tests
         run: pytest services/*/tests/ -v
