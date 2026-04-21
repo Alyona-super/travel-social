@@ -15,7 +15,7 @@ services:
     networks:
       - travel-network
 
-  profile-service:
+  user-service:
     build: ./services/user-service
     container_name: travel-user-service
     ports:
@@ -46,6 +46,19 @@ services:
       DB_NAME: travel
     networks:
       - travel-network
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: travel-jaeger
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true  # Поддержка протокола OTLP
+    ports:
+      - "16686:16686"  # Порт для UI Jaeger
+      - "4317:4317"    # Порт для OTLP gRPC
+      - "4318:4318"    # Порт для OTLP HTTP
+    networks:
+      - travel-network
+
 
   api-gateway:
     build: ./api-gateway
