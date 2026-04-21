@@ -1,10 +1,9 @@
-
 import sys
 import os
 
 # добавляем текущую папку
 current_dir = os.path.dirname(os.path.abspath(__file__))  # папка tests
-parent_dir = os.path.dirname(current_dir)                 # папка user_service
+parent_dir = os.path.dirname(current_dir)  # папка user_service
 
 print(f"Parent dir: {parent_dir}")  # Посмотрим, какой путь
 print(f"Files in parent dir: {os.listdir(parent_dir)}")  # Проверим, есть ли main.py
@@ -13,10 +12,10 @@ sys.path.insert(0, parent_dir)
 
 from fastapi.testclient import TestClient
 
-
 # Пробуем импортировать
 try:
     from main import app
+
     print("Import successful!")
 except ImportError as e:
     print(f"Import error: {e}")
