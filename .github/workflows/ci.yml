@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install black flake8
-          pip install -r services/User_service/requirements.txt
+          pip install -r services/user_service/requirements.txt
       - name: Run Black
         run: black --check services/
       - name: Run Flake8
@@ -49,8 +49,8 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pytest pytest-asyncio
-          pip install -r services/User_service/requirements.txt
+          pip install -r services/user_service/requirements.txt
       - name: Run tests
         env:
           DATABASE_URL: postgresql://travel:travel123@localhost:5432/travel
-        run: pytest services/User_service/tests/ -v
+        run: pytest services/user_service/tests/ -v
