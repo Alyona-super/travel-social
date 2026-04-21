@@ -18,6 +18,7 @@ class User(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     is_active = Column(Boolean, default=True)
+
     #  преобразование модели в словарь
     def to_dict(self):
 
@@ -29,5 +30,5 @@ class User(Base):
             "avatar_url": self.avatar_url,
             "bio": self.bio,
             "created_at": self.created_at.isoformat() if self.created_at else None,
-            "is_active": self.is_active
+            "is_active": self.is_active,
         }

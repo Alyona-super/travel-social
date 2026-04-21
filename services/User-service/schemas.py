@@ -3,6 +3,7 @@ from typing import Optional, List
 from uuid import UUID
 from datetime import datetime
 
+
 # для создания пользователя
 class UserCreate(BaseModel):
 
@@ -10,6 +11,7 @@ class UserCreate(BaseModel):
     password: str = Field(..., min_length=6)
     full_name: Optional[str] = None
     favorite_categories: Optional[List[str]] = []
+
 
 # для ответа с данными пользователя
 class UserResponse(BaseModel):
@@ -26,6 +28,7 @@ class UserResponse(BaseModel):
     class Config:
         from_attributes = True
 
+
 # для обновления пользователя
 class UserUpdate(BaseModel):
 
@@ -34,11 +37,13 @@ class UserUpdate(BaseModel):
     avatar_url: Optional[str] = None
     bio: Optional[str] = None
 
+
 #  для входа
 class LoginRequest(BaseModel):
 
     email: EmailStr
     password: str
+
 
 #  для ответа с токеном
 class TokenResponse(BaseModel):

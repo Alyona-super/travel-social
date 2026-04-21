@@ -3,6 +3,7 @@ import sys
 import json
 from datetime import datetime
 
+
 #  Форматирование логов в JSON
 class JSONFormatter(logging.Formatter):
 
@@ -14,7 +15,7 @@ class JSONFormatter(logging.Formatter):
             "message": record.getMessage(),
             "module": record.module,
             "function": record.funcName,
-            "line": record.lineno
+            "line": record.lineno,
         }
 
         # Добавляем исключение, если есть
@@ -22,6 +23,7 @@ class JSONFormatter(logging.Formatter):
             log_entry["exception"] = self.formatException(record.exc_info)
 
         return json.dumps(log_entry)
+
 
 # логирование для сервиса
 def setup_logging(service_name: str, log_level: str = "INFO"):
