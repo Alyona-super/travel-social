@@ -167,9 +167,3 @@ docs/_build/
 *.tfstate
 *.tfstate.*
 .terraform/
-
-# Node modules (если будет frontend)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
