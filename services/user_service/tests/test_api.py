@@ -1,11 +1,28 @@
-import pytest
+
+import sys
+import os
+
+# добавляем текущую папку
+current_dir = os.path.dirname(os.path.abspath(__file__))  # папка tests
+parent_dir = os.path.dirname(current_dir)                 # папка user_service
+
+print(f"Parent dir: {parent_dir}")  # Посмотрим, какой путь
+print(f"Files in parent dir: {os.listdir(parent_dir)}")  # Проверим, есть ли main.py
+
+sys.path.insert(0, parent_dir)
 
 from fastapi.testclient import TestClient
 
-# from main import app
-# from database import Base, engine, get_db
-from ..main import app
-from ..database import Base, engine, get_db
+
+# Пробуем импортировать
+try:
+    from main import app
+    print("Import successful!")
+except ImportError as e:
+    print(f"Import error: {e}")
+    # Покажем, что есть в sys.path
+    print("sys.path:", sys.path[:5])
+
 
 client = TestClient(app)
 
