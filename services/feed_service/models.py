@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, DateTime, Text, Float, ForeignKey, Index
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 import uuid
-from .database import Base
+from database import Base
 
 class Post(Base):
     __tablename__ = "posts"
