@@ -3,6 +3,7 @@ from typing import Optional, List
 from uuid import UUID
 from datetime import datetime
 
+
 # Посты
 class PostCreate(BaseModel):
     title: Optional[str] = None
@@ -10,11 +11,13 @@ class PostCreate(BaseModel):
     latitude: Optional[float] = None
     longitude: Optional[float] = None
 
+
 class PostUpdate(BaseModel):
     title: Optional[str] = None
     content: Optional[str] = None
     latitude: Optional[float] = None
     longitude: Optional[float] = None
+
 
 class PostResponse(BaseModel):
     id: UUID
@@ -29,9 +32,11 @@ class PostResponse(BaseModel):
     class Config:
         from_attributes = True
 
+
 # ---- Комментарии ----
 class CommentCreate(BaseModel):
     content: str
+
 
 class CommentResponse(BaseModel):
     id: UUID
@@ -43,10 +48,12 @@ class CommentResponse(BaseModel):
     class Config:
         from_attributes = True
 
+
 # Лента и геопоиск
 class FeedQuery(BaseModel):
     skip: int = 0
     limit: int = 20
+
 
 class NearbyQuery(BaseModel):
     lat: float

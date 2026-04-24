@@ -13,6 +13,7 @@ app = FastAPI(title="Feed Service", description="Posts, comments, feed and geo s
 
 app.include_router(router)
 
+
 @app.get("/health")
 def health():
     return {"status": "healthy", "service": "feed-service"}
