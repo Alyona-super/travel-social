@@ -8,7 +8,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# хеширование паролей
+# хеширование паролей сложно
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # JWT настройки
