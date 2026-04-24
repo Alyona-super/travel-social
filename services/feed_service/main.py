@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from .api import router
-from .database import engine, Base
+from api import router
+from database import engine, Base
 import logging
 
 logging.basicConfig(level=logging.INFO)
