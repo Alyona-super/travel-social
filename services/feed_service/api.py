@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
-from sqlalchemy import desc, func
+from sqlalchemy import desc
 from typing import List
 import math
 from .database import get_db
@@ -11,7 +11,6 @@ from .schemas import (
     PostResponse,
     CommentCreate,
     CommentResponse,
-    NearbyQuery,
 )
 from .auth import get_current_user
 
