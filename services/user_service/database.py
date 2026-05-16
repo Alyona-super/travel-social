@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 # Получаем URL бд из переменных окружения
 DATABASE_URL = os.getenv(
-    "DATABASE_URL", "postgresql://postgres:postgres@localhost:5433/travel"
+    "DATABASE_URL", "postgresql://postgres:postgres@192.168.43.223:5433/travel"
 )
 
 # Создаем engine

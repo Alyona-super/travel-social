@@ -59,7 +59,7 @@ docker-compose up -d postgres
 Нужно находиться в одной сети с сервером!!!
 set DATABASE_URL=postgresql://postgres:postgres@192.168.43.223:5433/travel
 
-psql -h 192.168.43.223 -p 5433 -U travel -d travel
+psql -h 192.168.43.223 -p 5433 -U postgres -d travel
 
 
 
@@ -67,6 +67,8 @@ psql -h 192.168.43.223 -p 5433 -U travel -d travel
 
 
 ### 5.Как тестировать
+
+pytest services/user_service/tests/ -v
 
 
 ### 6.Контакты и поддержка
