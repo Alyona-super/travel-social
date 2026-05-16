@@ -53,6 +53,13 @@ User Service (для получения информации о пользова
 
 
 ### 3.Способы запуска сервиса
+запуск контейнера
+docker-compose up -d postgres
+
+Нужно находиться в одной сети с сервером!!!
+set DATABASE_URL=postgresql://postgres:postgres@192.168.43.223:5433/travel
+
+psql -h 192.168.43.223 -p 5433 -U postgres -d travel
 
 
 
@@ -60,6 +67,8 @@ User Service (для получения информации о пользова
 
 
 ### 5.Как тестировать
+
+pytest services/user_service/tests/ -v
 
 
 ### 6.Контакты и поддержка

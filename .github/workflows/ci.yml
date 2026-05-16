@@ -53,5 +53,5 @@ jobs:
           pip install -r services/user_service/requirements.txt
       - name: Run tests
         env:
-          DATABASE_URL: postgresql://travel:travel123@localhost:5432/travel
+          DATABASE_URL: postgresql://postgres:postgres@192.168.43.223:5433/travel
         run: pytest services/user_service/tests/ -v

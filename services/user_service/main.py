@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import logging
@@ -12,14 +13,23 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Создаем таблицы в БД
-Base.metadata.create_all(bind=engine)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # startup: создание таблиц и логирование
+    logger.info("Creating database tables...")
+    Base.metadata.create_all(bind=engine)
+    logger.info("Profile service started")
+    yield
+    # shutdown: логирование остановки
+    logger.info("Profile service stopped")
 
 
+# Создаем FastAPI с lifespan
 app = FastAPI(
     title="Profile Service",
     description="Service for managing user profiles",
     version="1.0.0",
+    lifespan=lifespan,  # передаём сюда
 )
 
 
@@ -27,8 +37,6 @@ app = FastAPI(
 def read_root():
     return {"message": "соцсеть для путешественников!"}
 
-
-# CORS настройки
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -36,6 +44,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 # Подключаем роутеры
 app.include_router(profile_router, prefix="/api/v1/profile", tags=["profile"])
 
@@ -44,13 +53,3 @@ app.include_router(profile_router, prefix="/api/v1/profile", tags=["profile"])
 async def health_check():
     """Health check endpoint"""
     return {"status": "healthy", "service": "profile-service"}
-
-
-@app.on_event("startup")
-async def startup_event():
-    logger.info("Profile service started")
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    logger.info("Profile service stopped")
